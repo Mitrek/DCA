@@ -78,8 +78,7 @@ bill_list = list_formatter(bill_list_raw)
 escape = threading.Thread(target = terminate)
 escape.start() #Basta apertar ESC para encerrar o script.
 
-for x in range(len(bill_list)): #Script real do que estará acontecendo em meu PC.
-    billed = bill_list[x]
+for billed in bill_list:
     keyboard.wait("insert")
     click(280,280)
     write(billed)

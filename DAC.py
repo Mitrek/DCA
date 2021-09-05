@@ -6,10 +6,16 @@ import pyautogui
 import keyboard
 import datetime
 from time import sleep
+import threading
 
 
 #Functions
 
+def terminate(): #Possível apertar esc e interrompetr o script em emergências
+    keyboard.wait("esc")
+    import os
+    os._exit(0)
+    
 def list_formatter(list, to_remove = "\n"): #Essa aqui só serve pra tirar os caracteres especiais do arquivo .txt que tem o nome/contato de todos os cadetes.
     r_list = []
     for line in list:
@@ -67,6 +73,10 @@ bill_list_raw = bill_f.readlines()
 bill_list = list_formatter(bill_list_raw)
 
 #Real Stuff
+
+
+escape = threading.Thread(target = terminate)
+escape.start() #Basta apertar ESC para encerrar o script.
 
 for x in range(len(bill_list)): #Script real do que estará acontecendo em meu PC.
     billed = bill_list[x]

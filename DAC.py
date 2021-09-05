@@ -10,7 +10,7 @@ from time import sleep
 
 #Functions
 
-def list_formatter(list, to_remove = "\n"):
+def list_formatter(list, to_remove = "\n"): #Essa aqui só serve pra tirar os caracteres especiais do arquivo .txt que tem o nome/contato de todos os cadetes.
     r_list = []
     for line in list:
         formatted_line = line.rstrip("\n")
@@ -18,13 +18,13 @@ def list_formatter(list, to_remove = "\n"):
     return r_list
     
     
-def days_countdown():
+def days_countdown(): #Função retorna o número de dias até nossa potencial graduação a Aspirantes
     now = datetime.datetime.now()
     end_time = datetime.datetime(2024, 8, 23, 8, 0, 0)
     difference = str(end_time - now).split()[0]
     return difference
     
-def billing_message(billed):
+def billing_message(billed): #Fineza ignorar a variável bill_size por enquanto porque será editada mais tarde quando soubermos mais dos valores.
     if "RN" in billed:
         bill_size = 2
     elif "MG" in billed:
@@ -60,15 +60,15 @@ def click(*args):
     
 #Globals
 
-delay = 0.5
+delay = 0.5 #Dá pra aumentar o grau de segurança ou a velocidade por aqui, grandezas inversamente proporcionais.
 billing_link = "00020126580014br.gov.bcb.pix0136860e1e47-582b-495c-a937-da1fcea027715204000053039865802BR5925ANDRE LUCAS SOUSA LEANDRO6005Betim610932649-350622905256Q8Q0326954016308513953946304635B"
-bill_f = open("cobrados.txt","r")
+bill_f = open("cobrados.txt","r") #É só um arquivo de texto com todos os contatos dos cadetes 
 bill_list_raw = bill_f.readlines()
 bill_list = list_formatter(bill_list_raw)
 
 #Real Stuff
 
-for x in range(len(bill_list)):
+for x in range(len(bill_list)): #Script real do que estará acontecendo em meu PC.
     billed = bill_list[x]
     keyboard.wait("insert")
     click(280,280)
